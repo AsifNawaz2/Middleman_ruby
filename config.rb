@@ -6,7 +6,14 @@ activate :autoprefixer do |prefix|
 end
 
 # automatically refresh your browser whenever you edit files
-activate :livereload
+# activate :livereload
+
+# adding an external_pipeline for Tailwind
+activate :external_pipeline,
+  name: :tailwind,
+  command: "npx tailwindcss -i ./source/stylesheets/site.css -o ./dist/stylesheets/site.css #{"--watch" unless build?}",
+  latency: 2,
+  source: "./dist/"
 
 # Layouts
 # https://middlemanapp.com/basics/layouts/
